@@ -1,0 +1,49 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default">
+                <div class="panel-heading">Published Items</div>
+				<br />
+				<div class='container'>
+					<div class='row'>
+					@foreach(Auth::user()->carrierInfos as $carrierInfo)
+						<div class="col-sm-4 col-lg-4 col-md-4">
+                        	<div class="thumbnail">
+                            	<div class="caption">
+                                	<h4 class="pull-right">{{ number_format($carrierInfo->price) }}VND</h4>
+                                	<h4><a href="/carriers/{{ $carrierInfo->id }}">{{ $carrierInfo->route }}</a>
+                                	</h4>
+                                	<p>{{ $carrierInfo->description }}</p>
+                            	</div>
+                            	<div class="ratings">
+                               	 <p class="pull-right">12 reviews</p> 
+                                	<p>{{ date('d-m-Y', strtotime($carrierInfo->date)) }}
+                               	 </p>
+                            	</div>
+                        	</div>
+                    	</div>
+					@endforeach
+					</div>
+				</div>
+            </div>
+
+
+	<div class='row'>
+		<div class="col-md-10 col-md-offset-1">
+				@if(Auth::user()->type=='carrier')
+                <div class="panel-body">
+                   <a href="/publishCarryInfo" class='btn btn-info'>Post CarrierInfo</a> 
+                </div>
+				@endif
+				@if(Auth::user()->type=='goods')
+                <div class="panel-body">
+                   <a href="/publishGoodsInfo" class='btn btn-info'>Post Goods Info</a> 
+                </div>
+				@endif
+		</div>
+	</div>
+
+@endsection
