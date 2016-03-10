@@ -26,4 +26,9 @@ class InfoController extends Controller
 	{
 		return view('info.showCarry', compact('carrierInfo'));
 	}
+
+	public function showGoods(GoodsInfo $goodsInfo)
+	{
+		return view('info.showGoods', compact('goodsInfo'));
+	}
 }

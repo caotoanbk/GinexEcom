@@ -40,6 +40,7 @@ Route::group(['middleware' => 'web'], function () {
 	Route::get('carriers', 'InfoController@viewCarriers');
 	Route::get('goods', 'InfoController@viewGoods');
 	Route::get('carriers/{carrierInfo}', 'InfoController@showCarrier');
+	Route::get('goods/{goodsInfo}', 'InfoController@showGoods');
 
 	//welcom page
 	Route::get('/', function () { return view('welcome');});
