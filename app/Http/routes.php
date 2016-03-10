@@ -26,20 +26,33 @@
 
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
-	Route::resource('articles', 'ArticlesController');
-	Route::get('/about', 'PagesController@about');
-    Route::get('/home', 'HomeController@index');
+
 	Route::get('/publishCarryInfo', 'PublishController@carry');
 	Route::get('publishGoodsInfo', 'PublishController@goods');
+
 	Route::post('publishCarryInfo', 'PublishController@storeCarry');
 	Route::post('publishGoodsInfo', 'PublishController@storeGoods');
+
 	Route::get('carriers', 'InfoController@viewCarriers');
 	Route::get('goods', 'InfoController@viewGoods');
 	Route::get('carriers/{carrierInfo}', 'InfoController@showCarrier');
+
 	Route::get('/', function () { return view('welcome');});
+
 	Route::get('search', 'SearchController@search');
-	Route::group(['middleware' => ['auth', 'admin']], function(){
-		//protected Routes
-		Route::resource('admin', 'AdminController');
-	});	
+
+	Route::get('admin', ['middleware' => ['auth', 'admin'],'uses' => 'AdminController@index']);
+	Route::get('admin/users', ['middleware' => ['auth', 'admin'],'uses' => 'AdminController@showUsers']);
+	Route::get('admin/users/create', ['as' => 'users.create', 'middleware' => ['auth', 'admin'],'uses' => 'AdminController@createUser']);
+	Route::get('admin/users/edit', ['as' => 'users.edit', 'middleware' => ['auth', 'admin'],'uses' => 'AdminController@deleteUser']);
+	Route::get('admin/users/destroy', ['as' => 'users.destroy', 'middleware' => ['auth', 'admin'],'uses' => 'AdminController@deleteUser']);
+
+	Route::get('admin/carriers', ['middleware' => ['auth', 'admin'],'uses' => 'AdminController@showCarriers']);
+	Route::get('admin/carriers/accept', ['as' => 'carriers.accept', 'middleware' => ['auth', 'admin'],'uses' => 'AdminController@acceptCarriers']);
+	Route::get('admin/carriers/destroy', ['as' => 'carriers.destroy', 'middleware' => ['auth', 'admin'],'uses' => 'AdminController@destroyCarriers']);
+
+	Route::get('admin/goods', ['middleware' => ['auth', 'admin'], 'uses' => 'AdminController@showGoods']);
+	Route::get('admin/goods/accept', ['as' => 'goods.accept', 'middleware' => ['auth', 'admin'], 'uses' => 'AdminController@acceptGoods']);
+	Route::get('admin/goods/destroy', ['as' => 'goods.destroy', 'middleware' => ['auth', 'admin'], 'uses' => 'AdminController@destroyGoods']);
+
 });

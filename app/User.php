@@ -12,12 +12,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name','type', 'email', 'password',
+        'name','type', 'email', 'password','isAdmin'
     ];
-
-	protected $casts = [
-		'is_admin' => 'false',
-	];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -43,8 +39,4 @@ class User extends Authenticatable
 		return $this->hasMany(GoodsInfo::class);
 	}
 
-	public function isAdmin()
-	{
-		return $this->is_admin;
-	}
 }

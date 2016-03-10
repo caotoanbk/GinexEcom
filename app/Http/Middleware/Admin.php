@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Auth;
+use App\User;
 
 class Admin
 {
@@ -16,11 +17,9 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-		if( Auth::check() && Auth::user()->isAdmin() )
-		{
+		if(Auth::check() && Auth::user()->isAdmin)
 			return $next($request);
-		}
-
-		return 'you are not admin';
+		return response('Forbidden', 403);
     }
+
 }
