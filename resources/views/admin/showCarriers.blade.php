@@ -17,7 +17,7 @@
                         <th>Route</th>
                         <th>Price</th>
                         <th>Date</th>
-                        <th>Checked</th>
+                        <th>&nbsp;</th>
                         <th>&nbsp;</th>
                     </tr>
                     </thead>
@@ -28,10 +28,11 @@
                             <td>{{ $carrier->route }}</td>
                             <td>{{ $carrier->price }}</td>
                             <td>{{ $carrier->date }}</td>
-                            <td></td>
                             <td>
                                 {!! link_to_route('carriers.accept', 'Accept', [$carrier->id], ['class' => 'btn btn-xs btn-info']) !!}
                                 {!! Form::open(['style' => 'display: inline-block;', 'method' => 'DELETE', 'onsubmit' => 'return confirm(\'' . 'Are you sure?' . '\');',  'route' => array('carriers.destroy', $carrier->id)]) !!}
+							</td>
+							<td>
                                 {!! Form::submit('Delete', array('class' => 'btn btn-xs btn-danger')) !!}
                                 {!! Form::close() !!}
                             </td>

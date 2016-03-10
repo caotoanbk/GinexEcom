@@ -33,4 +33,12 @@ class AdminController extends Controller
 		$goods=GoodsInfo::all();
 		return view('admin.showGoods', compact('goods'));
 	}
+
+	public function acceptGoods($id)
+	{
+		$goods=GoodsInfo::find($id);
+		$goods->checked=true;
+		$goods->save();
+		return redirect(url('/admin/goods'));
+	}
 }

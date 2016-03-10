@@ -19,12 +19,12 @@
                 </li>
 				<li @if(Request::path() == 'admin/carriers') class="active" @endif>
 					<a href="{{ url('/admin/carriers') }}">
-						<span class="title">Thong tin hang hoa</span>
+						<span class="title">Thong tin van tai</span>
 					</a>
 				</li>
 				<li @if(Request::path() == 'admin/goods') class='active' @endif>
 					<a href="{{ url('/admin/goods') }}">
-						<span class="title">Thong tin van tai</span>
+						<span class="title">Thong tin hang hoa</span>
 					</a>
 				</li>
             @endif

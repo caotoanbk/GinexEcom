@@ -16,7 +16,7 @@
                         <th>Description</th>
                         <th>Date</th>
                         <th>Time</th>
-                        <th>Checked</th>
+                        <th>&nbsp;</th>
                         <th>&nbsp;</th>
                     </tr>
                     </thead>
@@ -29,10 +29,11 @@
                             <td>{{ $good->description }}</td>
                             <td>{{ $good->date }}</td>
                             <td>{{ $good->time }}</td>
-                            <td>true</td>
                             <td>
-                                {!! link_to_route('goods.accept', 'Accept', [$good->id], ['class' => 'btn btn-xs btn-info']) !!}
-                                {!! Form::open(['style' => 'display: inline-block;', 'method' => 'DELETE', 'onsubmit' => 'return confirm(\'' . 'Are you sure?' . '\');',  'route' => array('goods.destroy', $good->id)]) !!}
+                                @if (!$good->checked)  {!! link_to_route('goods.accept', 'Accept', [$good->id], ['class' => 'btn btn-xs btn-info']) !!}  @endif
+								{!! Form::open(['style' => 'display: inline-block;', 'method' => 'DELETE', 'onsubmit' => 'return confirm(\'' . 'Are you sure?' . '\');',  'route' => array('goods.destroy', $good->id)]) !!}
+							</td>
+							<td>
                                 {!! Form::submit('Delete', array('class' => 'btn btn-xs btn-danger')) !!}
                                 {!! Form::close() !!}
                             </td>

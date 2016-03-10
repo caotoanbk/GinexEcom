@@ -13,7 +13,7 @@ class AddCheckedToGoodsInfoTable extends Migration
     public function up()
     {
         Schema::table('GoodsInfo', function (Blueprint $table) {
-            //
+			$table->boolean('checked', false);
         });
     }
 
@@ -25,7 +25,7 @@ class AddCheckedToGoodsInfoTable extends Migration
     public function down()
     {
         Schema::table('GoodsInfo', function (Blueprint $table) {
-            //
+			$table->dropColumn('checked');
         });
     }
 }
