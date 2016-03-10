@@ -12,13 +12,13 @@ class InfoController extends Controller
 {
 	public function viewCarriers()
 	{
-		$carriersInfo=CarriersInfo::all();
+		$carriersInfo=CarriersInfo::where('checked', 1)->get();
 		return view('info.carriers', compact('carriersInfo'));
 	}
 
 	public function viewGoods()
 	{
-		$goodsInfo=GoodsInfo::all();
+		$goodsInfo=GoodsInfo::where('checked', 1)->get();
 		return view('info.cargo', compact('goodsInfo'));
 	}
 

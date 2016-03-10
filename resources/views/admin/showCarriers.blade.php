@@ -19,6 +19,7 @@
                         <th>Date</th>
                         <th>&nbsp;</th>
                         <th>&nbsp;</th>
+                        <th>&nbsp;</th>
                     </tr>
                     </thead>
 
@@ -29,12 +30,15 @@
                             <td>{{ $carrier->price }}</td>
                             <td>{{ $carrier->date }}</td>
                             <td>
-                                {!! link_to_route('carriers.accept', 'Accept', [$carrier->id], ['class' => 'btn btn-xs btn-info']) !!}
-                                {!! Form::open(['style' => 'display: inline-block;', 'method' => 'DELETE', 'onsubmit' => 'return confirm(\'' . 'Are you sure?' . '\');',  'route' => array('carriers.destroy', $carrier->id)]) !!}
+                               @if(!$carrier->checked)  {!! link_to_route('carriers.accept', 'Accept', [$carrier->id], ['class' => 'btn btn-xs btn-info']) !!} @endif
+                                {!! Form::open(['style' => 'display: inline-block;', 'method' => 'get', 'onsubmit' => 'return confirm(\'' . 'Are you sure?' . '\');',  'route' => array('carriers.destroy', $carrier->id)]) !!}
 							</td>
 							<td>
                                 {!! Form::submit('Delete', array('class' => 'btn btn-xs btn-danger')) !!}
+                            </td>
                                 {!! Form::close() !!}
+							<td>
+                              {!! link_to_route('carriers.deny', 'Deny', [$carrier->id], ['class' => 'btn btn-xs btn-warning']) !!} 
                             </td>
                         </tr>
                     @endforeach

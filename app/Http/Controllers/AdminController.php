@@ -38,7 +38,49 @@ class AdminController extends Controller
 	{
 		$goods=GoodsInfo::find($id);
 		$goods->checked=true;
+		$goods->valid=true;
 		$goods->save();
 		return redirect(url('/admin/goods'));
 	}
+
+	public function acceptCarriers($id)
+	{
+		$carrier=CarriersInfo::find($id);
+		$carrier->checked=true;
+		$carrier->save();
+		return redirect(url('/admin/carriers'));
+	}
+
+	public function denyGoods($id)
+	{
+		$goods=GoodsInfo::find($id);
+		$goods->checked=false;
+		$goods->valid=false;
+		$goods->save();
+		return redirect(url('/admin/goods'));
+	}
+
+	public function deleteGoods($id)
+	{
+		$goods=GoodsInfo::findOrFail($id);
+		$goods->delete();
+		return redirect(url('/admin/goods'));
+	}
+
+	public function denyCarriers($id)
+	{
+		$carriers=CarriersInfo::find($id);
+		$carriers->checked=false;
+		$carriers->valid=false;
+		$carriers->save();
+		return redirect(url('/admin/carriers'));
+	}
+
+	public function destroyCarriers($id)
+	{
+		$carrier=CarriersInfo::findOrFail($id);
+		$carrier->delete();
+		return redirect(url('/admin/carriers'));
+	}
+
 }

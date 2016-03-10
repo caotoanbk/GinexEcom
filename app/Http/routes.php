@@ -44,6 +44,9 @@ Route::group(['middleware' => 'web'], function () {
 	//welcom page
 	Route::get('/', function () { return view('welcome');});
 
+	//home page
+	Route::get('/home', ['uses' => 'HomeController@index']);
+
 	//search
 	Route::get('search', 'SearchController@search');
 
@@ -56,12 +59,14 @@ Route::group(['middleware' => 'web'], function () {
 
 	//admin carriers
 	Route::get('admin/carriers', ['middleware' => ['auth', 'admin'],'uses' => 'AdminController@showCarriers']);
-	Route::get('admin/carriers/accept', ['as' => 'carriers.accept', 'middleware' => ['auth', 'admin'],'uses' => 'AdminController@acceptCarriers']);
-	Route::get('admin/carriers/destroy', ['as' => 'carriers.destroy', 'middleware' => ['auth', 'admin'],'uses' => 'AdminController@destroyCarriers']);
+	Route::get('admin/carriers/accept/{id}', ['as' => 'carriers.accept', 'middleware' => ['auth', 'admin'],'uses' => 'AdminController@acceptCarriers']);
+	Route::get('admin/carriers/destroy/{id}', ['as' => 'carriers.destroy', 'middleware' => ['auth', 'admin'],'uses' => 'AdminController@destroyCarriers']);
+	Route::get('admin/carriers/deny/{id}', ['as' => 'carriers.deny', 'middleware' => ['auth', 'admin'], 'uses' => 'AdminController@denyCarriers']);
 
 	//admin goods
 	Route::get('admin/goods', ['middleware' => ['auth', 'admin'], 'uses' => 'AdminController@showGoods']);
 	Route::get('admin/goods/accept/{id}', ['as' => 'goods.accept', 'middleware' => ['auth', 'admin'], 'uses' => 'AdminController@acceptGoods']);
-	Route::get('admin/goods/destroy/{id}', ['as' => 'goods.destroy', 'middleware' => ['auth', 'admin'], 'uses' => 'AdminController@destroyGoods']);
-
+	Route::post('admin/goods/change/{id}', ['as' => 'goods.change', 'middleware' => ['auth', 'admin'], 'uses' => 'AdminController@changeGoods']);
+	Route::get('admin/goods/delete/{id}', ['as' => 'goods.delete', 'middleware' => ['auth', 'admin'], 'uses' => 'AdminController@deleteGoods']);
+	Route::get('admin/goods/deny/{id}', ['as' => 'goods.deny', 'middleware' => ['auth', 'admin'], 'uses' => 'AdminController@denyGoods']);
 });

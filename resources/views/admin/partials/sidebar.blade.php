@@ -5,12 +5,6 @@
             data-auto-scroll="true"
             data-slide-speed="200">
             @if(Auth::user()->isAdmin == true)
-                <li @if(Request::path() == config('quickadmin.route').'/menu') class="active" @endif>
-                    <a href="{{ url(config('quickadmin.route').'/menu') }}">
-                        <i class="fa fa-list"></i>
-                        <span class="title">Menu</span>
-                    </a>
-                </li>
                 <li @if(Request::path() == 'admin/users') class="active" @endif>
                     <a href="{{ url('/admin/users') }}">
                         <i class="fa fa-users"></i>
@@ -29,12 +23,18 @@
 				</li>
             @endif
             <li>
+                <a href="{{ url('home') }}">
+                    <span class="title">Home</span>
+                </a>
+			
+			</li>
+            <li>
                 <a href="{{ url('logout') }}">
                     <i class="fa fa-sign-out fa-fw"></i>
                     <span class="title">Logout</span>
                 </a>
 			
-</li>
+			</li>
         </ul>
     </div>
 </div>

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddCheckedToGoodsInfoTable extends Migration
+class AddValidToGoodsInfoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AddCheckedToGoodsInfoTable extends Migration
     public function up()
     {
         Schema::table('GoodsInfo', function (Blueprint $table) {
-			$table->boolean('checked')->default(false);
+			$table->boolean('valid')->default(1);
         });
     }
 
@@ -25,7 +25,7 @@ class AddCheckedToGoodsInfoTable extends Migration
     public function down()
     {
         Schema::table('GoodsInfo', function (Blueprint $table) {
-			$table->dropColumn('checked');
+			$table->dropColumn('valid');
         });
     }
 }

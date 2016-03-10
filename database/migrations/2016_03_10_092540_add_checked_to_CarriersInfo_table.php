@@ -13,7 +13,7 @@ class AddCheckedToCarriersInfoTable extends Migration
     public function up()
     {
         Schema::table('CarriersInfo', function (Blueprint $table) {
-			$table->boolean('checked', false);
+			$table->boolean('checked')->default(false);
         });
     }
 

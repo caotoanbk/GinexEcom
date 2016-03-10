@@ -21,6 +21,17 @@
                                 <p class="pull-right">12 reviews</p> 
                                 <p>{{ date('d-m-Y', strtotime($carrierInfo->date)) }}
                                 </p>
+
+								@if(!$carrierInfo->valid)
+								<p class='text-danger'><small><i>Thong tin khong hop le</i></small></p>
+								@else
+									
+									@if(!$carrierInfo->checked)
+									<p class='text-warning'><small><i>?? Thong tin chua duoc duyet</i></small></p>
+									@else
+									<p class='text-success'><small><i>Ok! Thong tin da duoc duyet</i></small></p>
+									@endif
+								@endif
                             </div>
                         </div>
                     </div>
@@ -61,6 +72,16 @@
                                 <p>{{ date('d-m-Y', strtotime($goodsInfo->date)) }}
                                 </p>
 								<p>{{ date('h:m', strtotime($goodsInfo->time)) }} </p>
+
+								@if(!$goodsInfo->valid)
+								<p class='text-danger'><small><i>Thong tin khong hop le</i></small></p>
+								@else 
+									@if(!$goodsInfo->checked)
+									<p class='text-warning'><small><i>?? Thong tin chua duoc duyet</i></small></p>
+									@else
+									<p class='text-success'><small><i>Ok! Thong tin da duoc duyet</i></small></p>
+									@endif
+								@endif
                             </div>
                         </div>
                     </div>

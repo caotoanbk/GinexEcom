@@ -18,6 +18,7 @@
                         <th>Time</th>
                         <th>&nbsp;</th>
                         <th>&nbsp;</th>
+                        <th>&nbsp;</th>
                     </tr>
                     </thead>
 
@@ -31,11 +32,12 @@
                             <td>{{ $good->time }}</td>
                             <td>
                                 @if (!$good->checked)  {!! link_to_route('goods.accept', 'Accept', [$good->id], ['class' => 'btn btn-xs btn-info']) !!}  @endif
-								{!! Form::open(['style' => 'display: inline-block;', 'method' => 'DELETE', 'onsubmit' => 'return confirm(\'' . 'Are you sure?' . '\');',  'route' => array('goods.destroy', $good->id)]) !!}
 							</td>
 							<td>
-                                {!! Form::submit('Delete', array('class' => 'btn btn-xs btn-danger')) !!}
-                                {!! Form::close() !!}
+                                  {!! link_to_route('goods.delete', 'Delete', [$good->id], ['class' => 'btn btn-xs btn-danger']) !!}  
+                            </td>
+							<td>	
+                                  {!! link_to_route('goods.deny', 'Deny', [$good->id], ['class' => 'btn btn-xs btn-warning']) !!}  
                             </td>
                         </tr>
                     @endforeach
