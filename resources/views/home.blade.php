@@ -63,7 +63,7 @@
                         <div class="thumbnail">
                             <div class="caption">
                                 <h4 class="pull-right">{{ $goodsInfo->route }}</h4>
-                                <h4><a href="/carriers/{{ $goodsInfo->id }}">{{ $goodsInfo->name }}</a>
+                                <h4><a href="/goods/{{ $goodsInfo->id }}">{{ $goodsInfo->name }}</a>
                                 </h4>
                                 <p>{{ $goodsInfo->description }}</p>
                             </div>

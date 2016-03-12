@@ -37,8 +37,6 @@ Route::group(['middleware' => 'web'], function () {
 	Route::post('publishGoodsInfo', 'PublishController@storeGoods');
 
 	//show info
-	Route::get('carriers', 'InfoController@viewCarriers');
-	Route::get('goods', 'InfoController@viewGoods');
 	Route::get('carriers/{carrierInfo}', 'InfoController@showCarrier');
 	Route::get('goods/{goodsInfo}', 'InfoController@showGoods');
 
@@ -47,6 +45,9 @@ Route::group(['middleware' => 'web'], function () {
 
 	//home page
 	Route::get('/home', ['uses' => 'HomeController@index']);
+
+	//all item
+	Route::get('/all', function() { return view('all'); });
 
 	//search
 	Route::get('search', 'SearchController@search');
@@ -70,4 +71,10 @@ Route::group(['middleware' => 'web'], function () {
 	Route::post('admin/goods/change/{id}', ['as' => 'goods.change', 'middleware' => ['auth', 'admin'], 'uses' => 'AdminController@changeGoods']);
 	Route::get('admin/goods/delete/{id}', ['as' => 'goods.delete', 'middleware' => ['auth', 'admin'], 'uses' => 'AdminController@deleteGoods']);
 	Route::get('admin/goods/deny/{id}', ['as' => 'goods.deny', 'middleware' => ['auth', 'admin'], 'uses' => 'AdminController@denyGoods']);
+
+
+Route::get('vantai',['as' => 'vantai', 'uses' => 'DatatablesController@getCarriers']);
+Route::get('vantai/data',['as' => 'vantai.data', 'uses' => 'DatatablesController@carriersData']);
+Route::get('hanghoa',['as' => 'hanghoa', 'uses' => 'DatatablesController@getGoods']);
+Route::get('hanghoa/data',['as' => 'hanghoa.data', 'uses' => 'DatatablesController@goodsData']);
 });
