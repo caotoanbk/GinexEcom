@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-@if(Auth::user()->type=='carrier')
 <div class="container">
     <div class="row">
+@if(Auth::user()->type=='carrier')
         <div class="col-md-12">
 				<h3 class="panel-body">My items</h3>
                 <div>
@@ -46,15 +46,11 @@
                    <a href="/publishCarryInfo" class='btn btn-info'>Post Carrier Info</a> 
                 </div>
 		</div>
-	</div>
-</div>
 @endif
 
 @if(Auth::user()->type=='goods')
 
 
-<div class="container">
-    <div class="row">
         <div class="col-md-12">
 				<h3 class="panel-body">My items</h3>
                 <div ><div class='panel-body'>You have {{ Auth::user()->goodsInfos->count() }} items</div>
@@ -96,8 +92,29 @@
                    <a href="/publishGoodsInfo" class='btn btn-info'>Post Goods Info</a> 
                 </div>
 		</div>
+@endif
+	<div class=row></div>
+<p class="text-center">
+    <button class="btn btn-default" data-toggle="modal" data-target="#loginModal">Login</button>
+</p>
+
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title">Login</h5>
+            </div>
+
+            <div class="modal-body">
+                <!-- The form is placed inside the body of modal -->
+            </div>
+        </div>
+    </div>
+</div>
 	</div>
 </div>
-@endif
 
 @endsection

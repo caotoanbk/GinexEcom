@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColumnsToCarriersInfoTable extends Migration
+class AddTgnhangToCarriersInfoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,7 @@ class AddColumnsToCarriersInfoTable extends Migration
     public function up()
     {
         Schema::table('CarriersInfo', function (Blueprint $table) {
-			$table->string('htdgoi');
-			$table->string('lxe');
-			$table->integer('slxe');
+           $table->dateTime('tgnhang'); 
         });
     }
 
@@ -27,9 +25,7 @@ class AddColumnsToCarriersInfoTable extends Migration
     public function down()
     {
         Schema::table('CarriersInfo', function (Blueprint $table) {
-			$table->dropColumn('htdgoi');
-			$table->dropColumn('lxe');
-			$table->dropColun('slxe');
+           $table->dropColumn('tgnhang'); 
         });
     }
 }

@@ -8,12 +8,16 @@
 <b>Thong tin van tai</b>
 </div>
 <div class='panel-body'>
-	<table id='carriers-table' class='table table-striped table-hover'>
+	<table id='carriers-table' class='table table-responsive table-bordered table-striped table-hover'>
 		<thead>
 			<tr>
                 <th>Tuyen duong</th>
-                <th>Mo ta</th>
-                <th>Gia</th>
+                <th>Loai xe</th>
+                <th>H/t dong goi</th>
+                <th>S/luong xe</th>
+                <th>Cuoc phi</th>
+                <th>T/g nhan hang</th>
+                <th>Y/c khac</th>
             </tr>
         </thead>
     </table>
@@ -31,8 +35,12 @@ $(function() {
         "ajax": '{!! route('vantai.data') !!}',
         "columns": [
             { data: 'route', name: 'route' },
-            { data: 'description', name: 'description' },
+            { data: 'lxe', name: 'lxe' },
+            { data: 'htdgoi', name: 'htdgoi' },
+            { data: 'slxe', name: 'slxe' },
             { data: 'price', name: 'price' },
+            { data: 'tgnhang', name: 'tgnhang' },
+            { data: 'description', name: 'description' },
         ]
     });
 });

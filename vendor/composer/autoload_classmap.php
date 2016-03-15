@@ -14,6 +14,7 @@ return array(
     'AddColumnsToCarriersInfoTable' => $baseDir . '/database/migrations/2016_03_15_131652_add_columns_to_CarriersInfo_table.php',
     'AddColumnsToGoodsInfoTable' => $baseDir . '/database/migrations/2016_03_15_131614_add_columns_to_GoodsInfo_table.php',
     'AddIsAdminToUserTable' => $baseDir . '/database/migrations/2016_03_09_143453_add_isAdmin_to_user_table.php',
+    'AddTgnhangToCarriersInfoTable' => $baseDir . '/database/migrations/2016_03_15_145905_add_tgnhang_to_CarriersInfo_table.php',
     'AddValidToCarriersInfoTable' => $baseDir . '/database/migrations/2016_03_10_114352_add_valid_to_CarriersInfo_table.php',
     'AddValidToGoodsInfoTable' => $baseDir . '/database/migrations/2016_03_10_114415_add_valid_to_GoodsInfo_table.php',
     'Adobe_Font_Metrics' => $vendorDir . '/phenx/php-font-lib/classes/Adobe_Font_Metrics.php',

@@ -22,14 +22,17 @@
 	<b>Thong tin hang hoa</b>
 	</div>
 	<div class='panel-body'>
-    <table class="table table-striped table-responsive table-hover" id="goods-table">
+    <table class="table table-striped table-responsive table-hover table-bordered" id="goods-table">
         <thead>
             <tr>
                 <th>Ten</th>
                 <th>Tuyen duong</th>
-                <th>Mo ta</th>
-                <th>Thoi gian</th>
+                <th>H/t dong goi</th>
+                <th>So luong</th>
+                <th>T/g giao hang</th>
+                <th>T/g nhan hang</th>
                 <th>Ngay dang</th>
+                <th>Y/c khac</th>
                 <th>&nbsp;</th>
             </tr>
         </thead>
@@ -77,9 +80,12 @@ $(function() {
         "columns": [
             { data: 'name', name: 'name' },
             { data: 'route', name: 'route' },
-            { data: 'description', name: 'description' },
-            { data: 'date', name: 'date' },
+            { data: 'htdgoi', name: 'htdgoi' },
+            { data: 'sluong', name: 'sluong' },
+            { data: 'tgghang', name: 'tgghang' },
+            { data: 'tgnhang', name: 'tgnhang' },
             { data: 'created_at', name: 'created_at' },
+            { data: 'description', name: 'description' },
             { data: 'chao_gia', name: 'chao_gia', searchable: false, orderable: false },
         ]
     });

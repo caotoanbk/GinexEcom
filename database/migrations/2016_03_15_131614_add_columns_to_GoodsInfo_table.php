@@ -13,7 +13,11 @@ class AddColumnsToGoodsInfoTable extends Migration
     public function up()
     {
         Schema::table('GoodsInfo', function (Blueprint $table) {
-            //
+			$table->string('htdgoi');
+			$table->integer('sluong');
+			$table->dateTime('tgghang');
+			$table->dateTime('tgnhang');
+			$table->dateTime('nhhdki');
         });
     }
 
@@ -25,7 +29,11 @@ class AddColumnsToGoodsInfoTable extends Migration
     public function down()
     {
         Schema::table('GoodsInfo', function (Blueprint $table) {
-            //
+            $table->dropColumn('htdgoi');
+            $table->dropColumn('sluong');
+            $table->dropColumn('tgghang');
+            $table->dropColumn('tgnhang');
+            $table->dropColumn('nhhdki');
         });
     }
 }
