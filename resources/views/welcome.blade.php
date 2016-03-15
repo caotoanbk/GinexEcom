@@ -3,14 +3,13 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">Welcome</div>
-
-                <div class="panel-body">
-                   GINEX INVESTMENT JOINT STOCK COMPANY 
-                </div>
+<header>
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-lead-in">Welcome To GinexEcom!</div>
+				<div class="intro-heading">GINEX INVESTMENT JOINT STOCK COMAPNY</div>
             </div>
+    </header>
         </div>
     </div>
 </div>

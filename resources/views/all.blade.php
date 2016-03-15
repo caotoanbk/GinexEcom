@@ -10,7 +10,7 @@
 	<option>Hang hoa</option>
 </select>
 <div class="table-responsive">
-<table id="example" class="table table-hover table-condensed table-striped"></table>
+<table id="example" class=""></table>
 </div>
     </div>
 </div>

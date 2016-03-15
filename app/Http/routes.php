@@ -73,8 +73,12 @@ Route::group(['middleware' => 'web'], function () {
 	Route::get('admin/goods/deny/{id}', ['as' => 'goods.deny', 'middleware' => ['auth', 'admin'], 'uses' => 'AdminController@denyGoods']);
 
 
-Route::get('vantai',['as' => 'vantai', 'uses' => 'DatatablesController@getCarriers']);
-Route::get('vantai/data',['as' => 'vantai.data', 'uses' => 'DatatablesController@carriersData']);
-Route::get('hanghoa',['as' => 'hanghoa', 'uses' => 'DatatablesController@getGoods']);
+Route::get('van-tai',['as' => 'vantai', 'uses' => 'DatatablesController@getCarriers']);
+Route::get('van-tai/data',['as' => 'vantai.data', 'uses' => 'DatatablesController@carriersData']);
+Route::get('hang-hoa',['as' => 'hanghoa', 'uses' => 'DatatablesController@getGoods']);
 Route::get('hanghoa/data',['as' => 'hanghoa.data', 'uses' => 'DatatablesController@goodsData']);
+
+//ajax request 
+Route::get('ajax/chaogia', ['middleware' => 'auth', 'uses' => 'AjaxController@chaogia']);
+Route::get('ajax/test','AjaxController@test');
 });

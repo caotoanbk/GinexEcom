@@ -39,4 +39,8 @@ class User extends Authenticatable
 		return $this->hasMany(GoodsInfo::class);
 	}
 
+	public function chaoGia()
+	{
+		return $this->hasMany(Chao_gia::class);
+	}
 }
