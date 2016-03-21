@@ -27,7 +27,7 @@ class PublishController extends Controller
 	public function goods()
 	{
 		if(Auth::user()->type=='carrier')
-			return redirect('/home');  
+			return redirect('/');  
 		return view('publish.goods');
 	}
 
@@ -36,7 +36,7 @@ class PublishController extends Controller
 		$input =$request->all();
 		$input['user_id']=Auth::user()->id;
 		CarriersInfo::create($input);
-		return redirect('carriers');
+		return redirect('/home');
 	}
 
 	public function storeGoods(CreateGoodsInfoRequest $request)
@@ -44,6 +44,7 @@ class PublishController extends Controller
 		$input=$request->all();
 		$input['user_id']=Auth::user()->id;
 		GoodsInfo::create($input);
-		return redirect('goods');
+		return redirect('/home');
 	}
+
 }

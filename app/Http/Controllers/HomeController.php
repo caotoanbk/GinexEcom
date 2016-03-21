@@ -25,6 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+		if(Auth::user()->type=='carrier')
+			return view('carrier_home');
+		return view('goods_home');
     }
 }

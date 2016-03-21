@@ -25,10 +25,12 @@ class CreateGoodsInfoRequest extends Request
     {
         return [
 			'name' => 'required',
-			'description' => 'required',
+			'htdgoi' => 'required',
+			'sluong' => 'required',
+			'tgghang' => 'required',
+			'tgnhang' => 'required',
+			'nhhdki' => 'required',
 			'route' => 'required',
-			'date' => 'required|date',
-			'time' => 'required',
         ];
     }
 }

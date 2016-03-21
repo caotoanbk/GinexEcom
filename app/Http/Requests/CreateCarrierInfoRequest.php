@@ -25,9 +25,12 @@ class CreateCarrierInfoRequest extends Request
     {
         return [
 			'route' => 'required',
-			'description' => 'required',
+			'lxe' => 'required',
+			'slxe' => 'required',
+			'htdgoi' => 'required',
 			'price' => 'required',
-			'date' => 'required|date',
+			'tgnhang' => 'required',
+			'description' => 'required',
         ];
     }
 }

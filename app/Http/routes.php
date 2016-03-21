@@ -30,11 +30,11 @@ Route::group(['middleware' => 'web'], function () {
 
 	//customer publish info
 	Route::get('/publishCarryInfo', 'PublishController@carry');
-	Route::get('publishGoodsInfo', 'PublishController@goods');
+	Route::get('/publishGoodsInfo', 'PublishController@goods');
 
 	//process publish info
-	Route::post('publishCarryInfo', 'PublishController@storeCarry');
-	Route::post('publishGoodsInfo', 'PublishController@storeGoods');
+	Route::post('/publishCarryInfo', 'PublishController@storeCarry');
+	Route::post('/publishGoodsInfo', 'PublishController@storeGoods');
 
 	//show info
 	Route::get('carriers/{carrierInfo}', 'InfoController@showCarrier');
@@ -49,6 +49,9 @@ Route::group(['middleware' => 'web'], function () {
 	//all item
 	Route::get('/all', function() { return view('all'); });
 
+	//edit item 
+	Route::get('/goods-edit/{id}', 'EditController@editGoods');
+	Route::post('/carriers-edit/{id}', 'EditController@editCarriers');
 	//search
 	Route::get('search', 'SearchController@search');
 
@@ -81,4 +84,20 @@ Route::get('hanghoa/data',['as' => 'hanghoa.data', 'uses' => 'DatatablesControll
 //ajax request 
 Route::get('ajax/chaogia', ['middleware' => 'auth', 'uses' => 'AjaxController@chaogia']);
 Route::get('ajax/test','AjaxController@test');
+    
+    //route test
+    Route::get('/test', 'TestController@test');
+    Route::post('/test', 'TestController@save');
+	Route::get('alltest', 'TestController@show');
+
+	//route find suitable carrier 
+	Route::get('/van-tai/{id}', ['as' => 'vantai.timkiem', 'uses' => 'DatatablesController@findCarriers']);
+	Route::get('tim-kiem-van-tai/{id}', ['as' => 'vantai.timkiem.data', 'uses' => 'DatatablesController@findCarriersData']);
+
+
+	Route::get('/ajax-carrier-detail/{id}', 'CarrierController@detail');
+
+
+	//route chao gia hang hoa 
+	Route::get('/chao-gia-hh/{id}', ['as' => 'chaogia.hanghoa.data', 'uses' => 'DatatablesController@cgHh']);
 });
