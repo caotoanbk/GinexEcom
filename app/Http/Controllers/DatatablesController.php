@@ -40,7 +40,7 @@ class DatatablesController extends Controller
 				
 		return Datatables::of($goodsInfo)->addColumn('chao_gia', function($goodInfo) {
 			if(Auth::check() && Auth::user()->type=='carrier')
-				return '<button class="btn btn-xs btn-primary">Chao gia <span class="badge">'. $goodInfo->chaoGia->count().'</badge></button>';
+				return '<button class="btn btn-xs btn-primary" data-toggle="modal" id='.$goodInfo->id.' data-target="#myModal">Chao gia <span class="badge">'. $goodInfo->chaoGia->count().'</badge></button>';
 			else
 				return '';	})->editColumn('created_at', '{!! $created_at->diffForHumans() !!}')->make(true);
 		

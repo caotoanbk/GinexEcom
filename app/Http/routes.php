@@ -97,6 +97,8 @@ Route::get('ajax/test','AjaxController@test');
 
 	Route::get('/ajax-carrier-detail/{id}', 'CarrierController@detail');
 
+	//route find min price of goods 
+	Route::get('/min-price/{id}', 'GoodsController@findMinPrice');
 
 	//route chao gia hang hoa 
 	Route::get('/chao-gia-hh/{id}', ['as' => 'chaogia.hanghoa.data', 'uses' => 'DatatablesController@cgHh']);

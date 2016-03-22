@@ -50,8 +50,8 @@
                     <form name='form-chao-gia' id='form-chao-gia'>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="muc-gia" class="control-label">Gía:</label>
-                                <input type='number' value=0 class='form-control' id='muc-gia' name='price' placeholder='Mức giá bạn đưa ra'>
+                                <label for="muc-gia" class="control-label">Muc gia thap nhat: <em><span id='min-price'></span></em></label>
+                                <input type='text'  class='form-control' id='muc-gia' name='price' placeholder='Mức giá bạn đưa ra'>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -69,8 +69,19 @@
 @stop 
 
 @push('scripts')
+<script src='/js/autoNumeric-min.js' type="text/javascript"></script>
 <script type='text/javascript'>
     $(function () {
+		//auto numeric
+		$('#muc-gia').autoNumeric('init', {
+			aSep:'.',
+			aDec: ',',
+			aSign: ' VND',
+			pSign: 's',
+			aPad: false,	
+		});
+
+					$('#min-price').autoNumeric('init',{ 'aSep': '.', 'aDec': ',', 'aSign': ' VND', 'pSign': 's', 'aPad': false} );
 
         //datatable
         var tablehh = $('#goods-table').DataTable({
@@ -78,99 +89,47 @@
             "serverSide": true,
             "ajax": '{!! route('hanghoa.data') !!}',
             "columns": [
-                {
-                    data: 'name',
-                    name: 'name'
-                },
-                {
-                    data: 'route',
-                    name: 'route'
-                },
-                {
-                    data: 'htdgoi',
-                    name: 'htdgoi'
-                },
-                {
-                    data: 'sluong',
-                    name: 'sluong'
-                },
-                {
-                    data: 'tgghang',
-                    name: 'tgghang'
-                },
-                {
-                    data: 'tgnhang',
-                    name: 'tgnhang'
-                },
-                {
-                    data: 'created_at',
-                    name: 'created_at'
-                },
-                {
-                    data: 'description',
-                    name: 'description'
-                },
-                {
-                    data: 'chao_gia',
-                    name: 'chao_gia',
-                    searchable: false,
-                    orderable: false
-                },
+                { data: 'name', name: 'name' },
+                { data: 'route', name: 'route' },
+                { data: 'htdgoi', name: 'htdgoi' },
+                { data: 'sluong', name: 'sluong' },
+                { data: 'tgghang', name: 'tgghang' },
+                { data: 'tgnhang', name: 'tgnhang' },
+                { data: 'created_at', name: 'created_at' },
+                { data: 'description', name: 'description' },
+                { data: 'chao_gia', name: 'chao_gia', searchable: false, orderable: false },
         ]
         });
+		
 
-            //button chao gia
-            $('#goods-table tbody').on('click', 'button', function () {
-                var data = tablehh.row($(this).parents('tr')).data();
-                $('#myModal').modal('show');
-                $('#chao-gia').off('click');
-                //submit form chao gia
-                $('#chao-gia').on('click', function (e) {
+		//modal chao gia 
+		$('#myModal').on('show.bs.modal', function(e){
+			var $modal=$(this);
+			var id = e.relatedTarget.id;
+			$.ajax({
+				cache: false,
+				type: 'get',
+				contentType: 'json',
+				url: '/min-price/'+id,
+				success: function(data)
+				{
+					console.log('successful');
+					console.log(data);
+					$modal.find('#min-price').html(data);	
+				},
+				error: function(data)
+				{
+					console.log('error');
+				}
+			});
+		});
 
-                    var url = "/ajax/chaogia";
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                        }
-                    });
 
-                    e.preventDefault();
-                    //Validate form
-                    var form_data = {
-                        goods_id: data['id'],
-                        price: parseInt($('#muc-gia').val()),
-                    };
-                    $.ajax({
-                        cache: false,
-                        url: url,
-                        data: form_data,
-                        dataType: 'json',
-                        type: 'get',
-                        success: function (data) {
-                            $('#myModal').modal('hide');
-                            tablehh.ajax.reload(function () {
-                                //show message 
-
-                                $("#modal_message").modal('show');
-                                $("#modal_message").on('show.bs.modal', function () {
-                                    var myModal = $(this);
-                                    if (typeof (myModal.data('hideInterval')) !== 'undefined') {
-                                        clearTimeout(myModal.data('hideInterval'));
-                                    }
-                                    var timeout_msg = myModal.data('hideInterval', setTimeout(function () {
-                                        myModal.modal('hide');
-                                    }, 2000));
-                                });
-                            }, true);
-                        },
-                        error: function (data) {
-                            //console.log('error');
-                            //console.log('Error:', data);
-                        },
-                    });
-                    //close submit form chao gia
-                });
-            });
+		//chao gia button click 
+		$('#chao-gia').on('click', function(e) {
+			e.preventDefault();
+			alert('Chao gia button clicked');
+		});
         
     });
 </script>

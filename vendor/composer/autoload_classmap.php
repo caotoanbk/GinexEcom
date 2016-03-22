@@ -35,6 +35,7 @@ return array(
     'CreateGoodsInfoTable' => $baseDir . '/database/migrations/2016_03_04_143016_create_goods_info_table.php',
     'CreateOrdersTable' => $baseDir . '/database/migrations/2016_03_19_163931_create_orders_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+    'CreateRequestsTable' => $baseDir . '/database/migrations/2016_03_22_083825_create_requests_table.php',
     'CreateTestsTable' => $baseDir . '/database/migrations/2016_03_16_165221_create_tests_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DOMPDF' => $vendorDir . '/dompdf/dompdf/include/dompdf.cls.php',
