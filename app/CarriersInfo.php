@@ -18,4 +18,14 @@ class CarriersInfo extends Model
 		$this->attributes['tgnhang']=Carbon::createFromFormat('d/m/Y H:i', $date);
 	}
 
+	public function carrierReq()
+	{
+		return $this->hasMany(CarrierRequire::class, 'carrier_id');
+	}
+
+	public function user()
+	{
+		return $this->belongsTo(User::class, 'user_id');
+	}
+
 }

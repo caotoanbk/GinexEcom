@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\CarriersInfo;
 use App\GoodsInfo;
+use Gate;
+use User;
 
 class InfoController extends Controller
 {
@@ -24,11 +26,17 @@ class InfoController extends Controller
 
 	public function showCarrier(CarriersInfo $carrierInfo)
 	{
+		if(Gate::denies('update-carrier', $carrierInfo)){
+			abort(403);
+		}
 		return view('info.showCarry', compact('carrierInfo'));
 	}
 
 	public function showGoods(GoodsInfo $goodsInfo)
 	{
+		if(Gate::denies('update-goods', $goodsInfo)){
+			abort(403);
+		}
 		return view('info.showGoods', compact('goodsInfo'));
 	}
 }

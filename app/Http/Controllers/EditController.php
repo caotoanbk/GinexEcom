@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\GoodsInfo;
+use App\CarriersInfo;
 use Response;
 
 class EditController extends Controller
@@ -15,6 +16,12 @@ class EditController extends Controller
 	{
 		$goods=GoodsInfo::find($id);
 		return Response::json($goods);
+	}
+
+	public function editCarrier($id)
+	{
+		$carrier = CarriersInfo::find($id);
+		return Response::json($carrier);
 	}
 
 }

@@ -43,4 +43,9 @@ class User extends Authenticatable
 	{
 		return $this->hasMany(Chao_gia::class);
 	}
+
+	public function carrierReq()
+	{
+		return $this->hasMany(CarrierRequire::class, 'user_id');	
+	}
 }

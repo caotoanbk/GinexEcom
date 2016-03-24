@@ -1,9 +1,8 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row">
-<header>
+	<header>
         <div class="container">
             <div class="intro-text">
                 <div class="intro-lead-in">Welcome To GinexEcom!</div>

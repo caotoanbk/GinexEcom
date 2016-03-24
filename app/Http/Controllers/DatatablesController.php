@@ -10,6 +10,7 @@ use App\User;
 use App\CarriersInfo;
 use Auth;
 use App\GoodsInfo;
+use App\CarrierRequire;
 class DatatablesController extends Controller
 {
 	public function getCarriers()
@@ -35,7 +36,7 @@ class DatatablesController extends Controller
 
 	public function goodsData()
 	{
-		$goodsInfo=GoodsInfo::select(['id','htdgoi', 'sluong','tgghang','tgnhang','route', 'name', 'description', 'date', 'created_at'])->where('checked', true);
+		$goodsInfo=GoodsInfo::select(['id','htdgoi', 'sluong','tgghang','tgnhang','route', 'name', 'description', 'created_at'])->where('checked', true);
 		
 				
 		return Datatables::of($goodsInfo)->addColumn('chao_gia', function($goodInfo) {
@@ -69,5 +70,21 @@ class DatatablesController extends Controller
 
 		return Datatables::of($chaogia)->addColumn('accept', function($cgia){ return '<button class="btn btn-sm btn-primary">Chap nhan</ button>'; })->make(true);
 	}
+
+	public function findGoods($id)
+	{
+		return view('datatables.find_goods', compact('id'));
+	}
+
+	public function findGoodsData($id)
+	{
+		$route=CarriersInfo::find($id)->route;
+		$goodsInfo=GoodsInfo::select(['route', 'name', 'htdgoi', 'sluong', 'tgnhang', 'tgghang', 'nhhdki', 'description'])->where('checked', true)->where('route',$route) ;
+		
+		return Datatables::of($goodsInfo)->addColumn('cgia', function($data){
+			return '<button class="btn btn-primary btn-sm">Chao gia</button>';
+		})->make(true);
+	}
+
 }
 

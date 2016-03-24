@@ -50,12 +50,12 @@
                     <form name='form-chao-gia' id='form-chao-gia'>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="muc-gia" class="control-label">Muc gia thap nhat: <em><span id='min-price'></span></em></label>
+                                <label for="muc-gia" class="control-label">Mức giá thấp nhât: <em><span id='min-price'></span></em></label>
                                 <input type='text'  class='form-control' id='muc-gia' name='price' placeholder='Mức giá bạn đưa ra'>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Huy</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
                             <button type="submit" id="chao-gia" class="btn btn-primary">Chào giá</button>
                         </div>
                     </form>

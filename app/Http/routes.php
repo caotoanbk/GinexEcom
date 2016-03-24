@@ -46,12 +46,12 @@ Route::group(['middleware' => 'web'], function () {
 	//home page
 	Route::get('/home', ['uses' => 'HomeController@index']);
 
-	//all item
-	Route::get('/all', function() { return view('all'); });
-
 	//edit item 
 	Route::get('/goods-edit/{id}', 'EditController@editGoods');
-	Route::post('/carriers-edit/{id}', 'EditController@editCarriers');
+	Route::post('/goods-edit/{id}', 'EditController@updateGoods');
+
+	Route::get('/carrier-edit/{id}', 'EditController@editCarrier');
+	Route::post('/carrier-edit/{id}', 'EditController@updateCarrier');
 	//search
 	Route::get('search', 'SearchController@search');
 
@@ -76,14 +76,14 @@ Route::group(['middleware' => 'web'], function () {
 	Route::get('admin/goods/deny/{id}', ['as' => 'goods.deny', 'middleware' => ['auth', 'admin'], 'uses' => 'AdminController@denyGoods']);
 
 
-Route::get('van-tai',['as' => 'vantai', 'uses' => 'DatatablesController@getCarriers']);
-Route::get('van-tai/data',['as' => 'vantai.data', 'uses' => 'DatatablesController@carriersData']);
-Route::get('hang-hoa',['as' => 'hanghoa', 'uses' => 'DatatablesController@getGoods']);
-Route::get('hanghoa/data',['as' => 'hanghoa.data', 'uses' => 'DatatablesController@goodsData']);
+	Route::get('van-tai',['as' => 'vantai', 'uses' => 'DatatablesController@getCarriers']);
+	Route::get('van-tai/data',['as' => 'vantai.data', 'uses' => 'DatatablesController@carriersData']);
+	Route::get('hang-hoa',['as' => 'hanghoa', 'uses' => 'DatatablesController@getGoods']);
+	Route::get('hanghoa/data',['as' => 'hanghoa.data', 'uses' => 'DatatablesController@goodsData']);
 
-//ajax request 
-Route::get('ajax/chaogia', ['middleware' => 'auth', 'uses' => 'AjaxController@chaogia']);
-Route::get('ajax/test','AjaxController@test');
+	//ajax request 
+	Route::get('ajax/chaogia', ['middleware' => 'auth', 'uses' => 'AjaxController@chaogia']);
+	Route::get('ajax/test','AjaxController@test');
     
     //route test
     Route::get('/test', 'TestController@test');
@@ -93,6 +93,9 @@ Route::get('ajax/test','AjaxController@test');
 	//route find suitable carrier 
 	Route::get('/van-tai/{id}', ['as' => 'vantai.timkiem', 'uses' => 'DatatablesController@findCarriers']);
 	Route::get('tim-kiem-van-tai/{id}', ['as' => 'vantai.timkiem.data', 'uses' => 'DatatablesController@findCarriersData']);
+	//route find suitable goods
+	Route::get('/hang-hoa/{id}', ['as' => 'hhoa.timkiem', 'uses' => 'DatatablesController@findGoods']);
+	Route::get('/tim-kiem-hang-hoa/{id}', ['as' => 'hhoa.timkiem.data', 'uses' => 'DatatablesController@findGoodsData']);
 
 
 	Route::get('/ajax-carrier-detail/{id}', 'CarrierController@detail');
@@ -102,4 +105,7 @@ Route::get('ajax/test','AjaxController@test');
 
 	//route chao gia hang hoa 
 	Route::get('/chao-gia-hh/{id}', ['as' => 'chaogia.hanghoa.data', 'uses' => 'DatatablesController@cgHh']);
+
+	//route carrier request from goods 
+	Route::get('/ajax-carrier-request/{id}', 'AjaxController@requestCarrier');
 });

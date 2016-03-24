@@ -30,4 +30,8 @@ class GoodsInfo extends Model
 	{ 
 		return $this->hasMany(Chao_gia::class,'goods_id');
 	}
+	 public function user()
+	 {
+		 return $this->belongsTo(User::class, 'user_id');
+	 }
 }

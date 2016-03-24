@@ -1,78 +1,25 @@
 @extends('layouts.app')
 @section('content')
-	<div class="container">
-	<div class="row">
-		            <div class="col-10 col-offset-1">
-
-                <div class="thumbnail">
-                    <div class="caption-full">
-                        <h4 class="pull-right text-info">{{ $goodsInfo->route }}</h4>
-                        <h3 class="text-info">{{ $goodsInfo->name }}</h3>
-                        <p>{{ $goodsInfo->description }}</p>
-                    </div>
-                    <div class="ratings">
-                        <p class="pull-right">3 reviews</p>
-                        <p class='text-primary'>{{ date('d/m/Y', strtotime($goodsInfo->date))}} {{ date('H:m', strtotime($goodsInfo->time))}}
-                        </p>
-                    </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-9 col-md-offset-2">
+            <div class="panel panel-default">
+                <h3 class="panel-heading panel-primary text-center">Cap nhat thong tin hang hoa</h3>
+                <div class="panel-body">
+						{!! Form::model($goodsInfo, array('url' => array('/update-goods/', $goodsInfo->id), 'class' => 'form-horizontal', 'method' => 'post', 'id' => 'goods-form')) !!}
+							@include('partials.goods_form',['submit' => 'Cap nhat'])
+						{!! Form::close() !!}
                 </div>
-
-                <div class="well">
-
-                    <div class="text-right">
-                        <a class="btn btn-success">Leave a Review</a>
-                    </div>
-
-                    <hr>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star-empty"></span>
-                            Anonymous
-                            <span class="pull-right">10 days ago</span>
-                            <p>This product was great in terms of quality. I would definitely buy another!</p>
-                        </div>
-                    </div>
-
-                    <hr>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star-empty"></span>
-                            Anonymous
-                            <span class="pull-right">12 days ago</span>
-                            <p>I've alredy ordered another one!</p>
-                        </div>
-                    </div>
-
-                    <hr>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star-empty"></span>
-                            Anonymous
-                            <span class="pull-right">15 days ago</span>
-                            <p>I've seen some better than this, but not at this price. I definitely recommend this item.</p>
-                        </div>
-                    </div>
-
-                </div>
-
             </div>
-
         </div>
-	</div>
-	</div>
+    </div>
+</div>
 @stop
+
+
+
+@push('scripts')
+<script type="text/javascript" src="/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"></script>
+<script src='/js/app/goods_form.js'></script>
+@endpush

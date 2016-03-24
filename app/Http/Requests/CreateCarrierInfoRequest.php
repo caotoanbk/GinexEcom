@@ -30,7 +30,6 @@ class CreateCarrierInfoRequest extends Request
 			'htdgoi' => 'required',
 			'price' => 'required',
 			'tgnhang' => 'required',
-			'description' => 'required',
         ];
     }
 }
