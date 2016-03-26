@@ -15,7 +15,7 @@
                             <h4><a href="/goods/{{ $goodsInfo->id }}">{{ $goodsInfo->name }}</a>
                                 </h4>
 							<a href='/goods/{{ $goodsInfo->id }}' type="button" class="btn btn-primary btn-xs" >Sua</a>
-							<a href='#' class='btn btn-danger btn-xs'>Xoa</a>
+							<a href='/delete-goods/{{ $goodsInfo->id }}' class='btn btn-danger btn-xs'>Xoa</a>
                         </div>
                         <div class="ratings">
 
@@ -27,7 +27,7 @@
 
                             <div class="pull-right"> {{ date_format(date_create($goodsInfo->tgghang), 'H:i d/m/y') }} </div>
 							 <div>Thoi gian giao hang:</div> 
-                            <div class="pull-right" style="{margin:0px}"> {{ date_format(date_create($goodsInfo->tgnhang), 'H:i d/m/y') }} </div>
+                            <div class="pull-right" > {{ date_format(date_create($goodsInfo->tgnhang), 'H:i d/m/y') }} </div>
 							 <div>Thoi gian nhan hang:</div> 
                             <div class="pull-right"> {{ date_format(date_create($goodsInfo->nhhdki), 'H:i d/m/y') }} </div>
 							
@@ -42,13 +42,11 @@
                             @else
 							<div class='pull-right'><span class='badge'>{{ $goodsInfo->chaoGia()->count() }}</span>&nbsp;@if($goodsInfo->chaoGia()->count())<a href='#' id='{{ $goodsInfo->id }}' data-target='#modalPrice' data-toggle='modal' class='btn btn-success btn-xs'>>>Chi tiet</a>@endif</div>
 							<div>So luot chao gia:</div>
-                            <p class='text-success'><small><i>(Thông tin của bạn đã được duyệt)</i></small></p>					<a href='/van-tai/{{ $goodsInfo->id }}' class='btn btn-primary btn-sm'>Tim nha van tai</a>
-                            @endif @endif
-							
-							
-
+							<p class='text-success'><small><i>(Thông tin của bạn đã được duyệt)</i></small></p>
+							<a href='/van-tai/{{ $goodsInfo->id }}' class='btn btn-primary btn-sm'>Tim nha van tai</a>
+							@endif
+							 @endif
                         </div>
-
                     </div>
                 </div>
                 @endforeach

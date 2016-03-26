@@ -3,6 +3,15 @@ $(function(){
     $('#time_nh').datetimepicker({
         locale: 'vi_VN'    
 	});
+	
+	//format number
+	$('#cuoc-phi').autoNumeric('init', {
+		aSep:'.',
+		aDec: ',',
+		aSign: ' VND',
+		pSign: 's',
+		aPad: false,	
+	});
 	//jquery validation
 	$('#carry-form').validate({
 		rules: {

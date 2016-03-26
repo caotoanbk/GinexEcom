@@ -36,6 +36,7 @@ class PublishController extends Controller
 		$input =$request->all();
 		$input['user_id']=Auth::user()->id;
 		CarriersInfo::create($input);
+		\Session::flash('flash_message', 'Thong tin cua ban duoc dang thanh cong. Chung toi se kiem tra va thong bao lai voi ban');
 		return redirect('/home');
 	}
 

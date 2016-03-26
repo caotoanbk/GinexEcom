@@ -6,7 +6,7 @@
             <div class="panel panel-default">
                 <h3 class="panel-heading panel-primary text-center">Cap nhat thong tin hang hoa</h3>
                 <div class="panel-body">
-						{!! Form::model($goodsInfo, array('url' => array('/update-goods/', $goodsInfo->id), 'class' => 'form-horizontal', 'method' => 'post', 'id' => 'goods-form')) !!}
+						{!! Form::model($goodsInfo, array('action' => array('InfoController@updateGoods', $goodsInfo->id), 'class' => 'form-horizontal', 'method' => 'patch', 'id' => 'goods-form')) !!}
 							@include('partials.goods_form',['submit' => 'Cap nhat'])
 						{!! Form::close() !!}
                 </div>

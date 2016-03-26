@@ -21,6 +21,7 @@
 
 
 @push('scripts')
+<script src='/js/autoNumeric-min.js' type="text/javascript"></script>
 <script type="text/javascript" src="/js/bootstrap-datetimepicker.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"></script>
 <script src='/js/app/carry_form.js'> </script>

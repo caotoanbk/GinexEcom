@@ -34,12 +34,7 @@
                         <div class="form-group{{ $errors->has('htdgoi') ? ' has-error' : '' }}">
 							{!! Form::label('htdgoi','Hình thức đóng gói', array('class' => 'col-md-4 control-label')) !!}
                             <div class="col-md-6">
-								<label class="radio-inline">
-								{!! Form::radio('htdgoi','hang roi', true) !!}Hàng rời
-								</label>
-								<label class="radio-inline">
-								{!! Form::radio('htdgoi','hang cont', true) !!}Hàng cont 
-								</label>
+								{!! Form::select('htdgoi', ['hang roi' => 'Hang roi', 'hang cont' => 'Hang cont'], old('htdgoi'), array('class' => 'form-control')) !!}
                                 @if ($errors->has('htdgoi'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('htdgoi') }}</strong>
@@ -50,7 +45,7 @@
                         <div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">
 							{!! Form::label('price','Cước phí', array('class' => 'col-md-4 control-label')) !!}
                             <div class="col-md-6">
-								{!! Form::text('price', old('price'), array('class' => 'form-control')) !!}
+								{!! Form::text('price', old('price'), array('class' => 'form-control','id' => 'cuoc-phi')) !!}
                                 @if ($errors->has('price'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('price') }}</strong>

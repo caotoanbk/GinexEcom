@@ -23,12 +23,7 @@
                         <div class="form-group{{ $errors->has('htdgoi') ? ' has-error' : '' }}">
 							{!! Form::label('htdgoi', 'Hinh thuc dong goi', array('class' => 'col-md-4 control-label')) !!}
                             <div class="col-md-6">
-								<label class="radio-inline">
-								{!! Form::radio('htdgoi', 'hang roi', true) !!}Hang roi
-								</label>
-								<label class="radio-inline">
-								{!! Form::radio('htdgoi', 'hang roi', false) !!}Hang cont 
-								</label>
+								{!! Form::select('htdgoi', ['hang roi' => 'Hang roi', 'hang cont' => 'Hang cont'], old('htdgoi'), array('class' => 'form-control')) !!}
                                 @if ($errors->has('htdgoi'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('htdgoi') }}</strong>

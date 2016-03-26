@@ -81,7 +81,7 @@
 			aPad: false,	
 		});
 
-					$('#min-price').autoNumeric('init',{ 'aSep': '.', 'aDec': ',', 'aSign': ' VND', 'pSign': 's', 'aPad': false} );
+		$('#min-price').autoNumeric('init',{ 'aSep': '.', 'aDec': ',', 'aSign': ' VND', 'pSign': 's', 'aPad': false} );
 
         //datatable
         var tablehh = $('#goods-table').DataTable({

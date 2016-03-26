@@ -35,6 +35,9 @@ Route::group(['middleware' => 'web'], function () {
 	//process publish info
 	Route::post('/publishCarryInfo', 'PublishController@storeCarry');
 	Route::post('/publishGoodsInfo', 'PublishController@storeGoods');
+	//process update info 
+	Route::patch('carrier/{id}/update', 'InfoController@updateCarrier');
+	Route::patch('goods/{id}/update', 'InfoController@updateGoods');
 
 	//show info
 	Route::get('carriers/{carrierInfo}', 'InfoController@showCarrier');
@@ -49,6 +52,10 @@ Route::group(['middleware' => 'web'], function () {
 	//edit item 
 	Route::get('/goods-edit/{id}', 'EditController@editGoods');
 	Route::post('/goods-edit/{id}', 'EditController@updateGoods');
+
+	//delete item 
+	Route::get('/delete-carrier/{id}', 'InfoController@deleteCarrier');
+	Route::get('/delete-goods/{id}', 'InfoController@deleteGoods');
 
 	Route::get('/carrier-edit/{id}', 'EditController@editCarrier');
 	Route::post('/carrier-edit/{id}', 'EditController@updateCarrier');
