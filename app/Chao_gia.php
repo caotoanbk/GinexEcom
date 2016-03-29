@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Chao_gia extends Model
 {
-	protected $table='chaogia';
+	protected $table="chaogia";
 	protected $fillable=['user_id', 'goods_id', 'price'];
 	
 	public function user()

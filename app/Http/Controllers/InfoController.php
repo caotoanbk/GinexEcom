@@ -22,7 +22,9 @@ class InfoController extends Controller
 	{
 
 		$carrier = CarriersInfo::findOrFail($id);
-		$carrier->update($request->all());
+		$input=$request->all();
+		$input['price'] = str_replace('.','', $input['price']);
+		$carrier->update($input);
 		return redirect('/home');
 	}
 

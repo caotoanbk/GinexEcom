@@ -17,13 +17,25 @@ class GoodsInfo extends Model
 	{
 		$this->attributes['tgghang']=Carbon::createFromFormat('d/m/Y H:i', $date);
 	}	
+	public function getTgghangAttribute($date)
+	{
+		return Carbon::parse($date)->format('d/m/Y H:i');
+	}	
 	public function setTgnhangAttribute($date)
 	{
 		$this->attributes['tgnhang']=Carbon::createFromFormat('d/m/Y H:i', $date);
 	}	
+	public function getTgnhangAttribute($date)
+	{
+		return Carbon::parse($date)->format('d/m/Y H:i');
+	}	
 	public function setNhhdkiAttribute($date)
 	{
 		$this->attributes['nhhdki']=Carbon::createFromFormat('d/m/Y H:i', $date);
+	}	
+	public function getNhhdkiAttribute($date)
+	{
+		return Carbon::parse($date)->format('d/m/Y H:i');
 	}	
 
 	public function chaoGia()

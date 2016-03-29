@@ -115,4 +115,7 @@ Route::group(['middleware' => 'web'], function () {
 
 	//route carrier request from goods 
 	Route::get('/ajax-carrier-request/{id}', 'AjaxController@requestCarrier');
+
+	//request carrier
+	Route::post('/require-carrier', 'RequireController@requireCarrier');
 });

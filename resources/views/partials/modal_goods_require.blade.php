@@ -1,5 +1,4 @@
 <div class='row'>
-
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -10,7 +9,7 @@
       </div>
       <div class="modal-body">
 
-                    <form class="form-horizontal"  name ="{{ $name }}" id="content" role="form" action='url'>
+                    <form class="form-horizontal"  name ="{{ $name }}" id="content" role="form" action="/require-carrier" method="post">
                         {!! csrf_field() !!}
 
                         <div class="form-group">
@@ -18,12 +17,10 @@
 
                             <div class="col-md-6">
                                 <input type='text'  id = 'name' class="form-control" name="name" value="">
-
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label">Tuyến đường</label>
-
                             <div class="col-md-6">
                                 <input type='text' id = 'route' class="form-control" name="route" value="">
                             </div>
@@ -65,8 +62,6 @@
 
                             </div>
                         </div>
-						@if($ycvtai)
-							
                         <div class="form-group">
                             <label class="col-md-4 control-label">Mức giá đưa ra</label>
 
@@ -75,17 +70,6 @@
 
                             </div>
                         </div>
-						@else
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Hạn đăng ký</label>
-
-                            <div class="col-md-6">
-                                <input type="text" id='time_hdk' class="form-control" name="nhhdki" value="">
-
-                            </div>
-                        </div>
-						@endif
 
                         <div class="form-group">
                             <label class="col-md-4 control-label">Yêu cầu khác</label>
