@@ -12,6 +12,8 @@
     <link href="/css/bootstrap-datetimepicker.min.css" type="text/css" rel='stylesheet'>
     <link type="text/css" href="/css/jquery-confirm.min.css" rel="stylesheet"> 
     <link type="text/css" href="/css/custom.css" rel="stylesheet"> 
+    <link type="text/css" href="/css/buttons.bootstrap.min.css" rel="stylesheet"> 
+    <link type="text/css" href="/css/responsive.bootstrap.min.css" rel="stylesheet"> 
     <style>
         body {
             font-family: 'Lato';
@@ -70,12 +72,16 @@
         </div>
     </nav>
     @yield('content')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/jquery-confirm.min.js"></script>
     <script src="/js/moment-with-locales.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.11/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
+    <script src="/js/jquery.dataTables.min.js"></script>
+    <script src="/js/datatables.bootstrap.js"></script>
+    <script src="/js/dataTables.buttons.min.js"></script>
+    <script src="/js/buttons.bootstrap.min.js"></script>
+    <script src="/js/jszip.min.js"></script>
+    <script src="/js/buttons.html5.min.js"></script>
     @stack('scripts')
 </body>
 </html>

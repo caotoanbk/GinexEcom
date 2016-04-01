@@ -8,8 +8,25 @@
 		});		
         $('#carriers-table').DataTable({
             "processing": true,
+			"responsive": true,
             "serverSide": true,
             "ajax": '/van-tai/data',
+			"dom": 'Bfrtip',
+			"buttons": [
+				{
+					extend: 'excel',
+					title: 'title',
+					className: 'btn btn-default btn-sm',
+					text: 'Save as excel'
+				},
+				{
+					text: 'Reload',
+					className: 'btn btn-default btn-sm',
+					action: function ( e, dt, node, config ) {
+						dt.ajax.reload();
+					}
+				}
+			],
             "columns": [
                 { data: 'route', name: 'route' },
                 { data: 'lxe', name: 'lxe' },
@@ -45,9 +62,9 @@
 					$modal.find('#yckhac').val('');
 					$modal.find('#route').val(data.route);	
 					$modal.find('#htdgoi').val(data.htdgoi);	
-					$modal.find('#htdgoi').attr('disabled', true);	
+					$modal.find('#htdgoi').attr('readonly', true);	
 					$modal.find('#time_gh').val(data.tgnhang);
-					$modal.find('#time_gh').attr('disabled', true);
+					$modal.find('#time_gh').attr('readonly', true);
 				},
 				error: function(data)
 				{
@@ -72,7 +89,7 @@
 					tgnhang: {
 						required: true,
 					},
-					mgdra: {
+					price: {
 						required: true,
 					}
 				},
@@ -92,7 +109,7 @@
 					tgnhang: {
 						required: '<div class="text-danger"><i>Ban chua nhap thoi gian nhan hang</i></div>',
 					},
-					mgdra: {
+					price: {
 						required: '<div class="text-danger"><i>Ban chua chon muc gia</i></div> ',
 					}
 
